@@ -1,63 +1,46 @@
-class Filme:
-    def __init__(self, nome, ano, duracao):
-        self.__nome = nome.title()
-        self.__ano = ano
-        self.__duracao = duracao
-        self.__like = 0
+class Programa:
+    def __init__(self, nome, ano):
+        self._nome = nome.title()
+        self._ano = ano
+        self._likes = 0
     
     @property
     def nome(self):
-        return self.__nome
+        return self._nome.title()
     
     @nome.setter
     def nome(self, novo_nome):
-        self.__nome = novo_nome.title()
+        self._nome = novo_nome.title()
     
     @property
     def ano(self):
-        return self.__ano
+        return self._ano
+    
+    @property
+    def like(self):
+        return self._likes
+    
+    def dar_likes(self):
+        self._likes += 1
+
+class Filme(Programa):
+    def __init__(self, nome, ano, duracao):
+        super().__init__(nome, ano)
+        self._duracao = duracao
     
     @property
     def duracao(self):
-        return self.__duracao
+        return self._duracao
     
-    @property
-    def like(self):
-        return self.__like
-    
-    def dar_likes(self):
-        self.__like += 1
-
-class Serie:
+class Serie(Programa):
     def __init__(self, nome, ano, temporada):
-        self.__nome = nome.title()
-        self.__ano = ano
-        self.__temporada = temporada
-        self.__like = 0
-    
-    @property
-    def nome(self):
-        return self.__nome
-    
-    @nome.setter
-    def nome(self, novo_nome):
-        self.__nome = novo_nome.title()
-    
-    @property
-    def ano(self):
-        return self.__ano
+        super().__init__(nome, ano)
+        self._temporada = temporada
     
     @property
     def temporada(self):
-        return self.__temporada
+        return self._temporada
     
-    @property
-    def like(self):
-        return self.__like
-    
-    def dar_likes(self):
-        self.__like += 1
-
 if __name__ == "__main__":
     vingadores = Filme('vigandores', 2018, 160)
     atlanta = Serie('atlanta', 2018, 2)
